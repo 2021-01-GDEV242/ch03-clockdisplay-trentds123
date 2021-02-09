@@ -30,18 +30,28 @@ public class ClockDisplay
     }
     // method changed the hours after 12 to the 12 hour time.
     //return the new changed time.
-     public String get12HourTimeDisplay(){
+      public String get12HourTimeDisplay(){
+        String am = " am";
+        int amOrPm = 0;
+        String pm = " pm";
         if(hours.getValue() >12){
             setTime(hours.getValue() - 12,minutes.getValue());
             updateDisplay();
+            amOrPm = 1;
         }
-        if(hours.getValue() == 1){
-            setTime(00,minutes.getValue());
+        if(hours.getValue() == 0){
+            setTime(12,minutes.getValue());
             updateDisplay();
         }
-         return displayString;
+        if(amOrPm == 1 || hours.getValue() == 12){
+            return displayString + pm;
+        }
+        else{
+            return displayString + am;
+        }
             
     }
+    
 
     /**
      * Constructor for ClockDisplay objects. This constructor
