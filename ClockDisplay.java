@@ -28,6 +28,20 @@ public class ClockDisplay
         minutes = new NumberDisplay(60);
         updateDisplay();
     }
+    // method changed the hours after 12 to the 12 hour time.
+    //return the new changed time.
+     public String get12HourTimeDisplay(){
+        if(hours.getValue() >12){
+            setTime(hours.getValue() - 12,minutes.getValue());
+            updateDisplay();
+        }
+        if(hours.getValue() == 1){
+            setTime(00,minutes.getValue());
+            updateDisplay();
+        }
+         return displayString;
+            
+    }
 
     /**
      * Constructor for ClockDisplay objects. This constructor
